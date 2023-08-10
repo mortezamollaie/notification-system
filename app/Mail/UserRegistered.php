@@ -9,19 +9,16 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class TopicCreated extends Mailable
+class UserRegistered extends Mailable
 {
     use Queueable, SerializesModels;
-    public $first_name;
-    public $last_name;
 
     /**
      * Create a new message instance.
      */
     public function __construct()
     {
-        $this->first_name = 'morteza';
-        $this->last_name = 'mollaie';
+        //
     }
 
     /**
@@ -30,7 +27,7 @@ class TopicCreated extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Topic Created',
+            subject: 'User Registered',
         );
     }
 
@@ -40,7 +37,7 @@ class TopicCreated extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.topic-created',
+            markdown: 'emails.user-registered',
         );
     }
 
