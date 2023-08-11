@@ -21,8 +21,8 @@ use App\Models\User;
 use App\Mail\TopicCreated;
 
 Route::get('/', function () {
-    $notification = resolve(Notification::class);
-    // $notification->sendEmail(User::find(1), new TopicCreated);
-    $notification->sendSms(User::find(1), 'این یک پیام تستی میباشد.');
+    $notification = new Notification;
+    $notification->sendEmail(User::find(1), new TopicCreated);
+    // $notification->sendSms(User::find(1), 'این یک پیام تستی میباشد.');
 
 });
