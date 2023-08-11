@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\TopicCreated;
+
 use App\Mail\UserRegistered;
 
 /*
@@ -16,6 +16,13 @@ use App\Mail\UserRegistered;
 |
 */
 
+use App\Services\Notification\Notification;
+use App\Models\User;
+use App\Mail\TopicCreated;
+
 Route::get('/', function () {
-    Mail::to('mm.gov.1381@gmail.com')->send(new TopicCreated);
+    $notification = resolve(Notification::class);
+    // $notification->sendEmail(User::find(1), new TopicCreated);
+    $notification->sendSms(User::find(1), 'این یک پیام تستی میباشد.');
+
 });
