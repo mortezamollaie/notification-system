@@ -19,10 +19,10 @@ use App\Mail\UserRegistered;
 use App\Services\Notification\Notification;
 use App\Models\User;
 use App\Mail\TopicCreated;
+use App\Http\Controllers\NotificationsController;
 
 Route::get('/', function () {
-    $notification = new Notification;
-    $notification->sendEmail(User::find(1), new TopicCreated);
-    // $notification->sendSms(User::find(1), 'این یک پیام تستی میباشد.');
-
+    return view('home');
 });
+
+Route::get('/notification/send-email', [NotificationsController::Class, 'email'])->name('notification.form.email');

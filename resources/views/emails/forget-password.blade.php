@@ -1,8 +1,5 @@
 <x-mail::message>
-    # User Registered
-
-    - list1
-    - list2
+    # forget password
 
     The body of your message.
 
