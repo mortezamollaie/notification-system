@@ -10,7 +10,7 @@
                     ارسال ایمیل
                 </div>
                 <div class="card-body">
-                    {{-- @if (session('success'))
+                    @if (session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
                         </div>
@@ -19,8 +19,8 @@
                         <div class="alert alert-danger">
                             {{ session('failed') }}
                         </div>
-                    @endif --}}
-                    <form action="method="POST">
+                    @endif
+                    <form action="{{ route('notification.send.email') }}" method="POST">
                         @csrf
                         <div class="form-group ">
                             <label for="user">کاربران</label>
@@ -38,15 +38,15 @@
                                 @endforeach
                             </select>
                         </div>
-                        {{-- @if ($errors->any())
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <div class="small mb-2">
-                                    <li class="text-danger">{{ $error }}</li>
-                                </div>
-                            @endforeach
-                        </ul>
-                    @endif --}}
+                        @if ($errors->any())
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <div class="small mb-2">
+                                        <li class="text-danger">{{ $error }}</li>
+                                    </div>
+                                @endforeach
+                            </ul>
+                        @endif
                         <button type="submit" class="btn btn-info">ارسال</button>
                     </form>
                 </div>
