@@ -36,4 +36,9 @@ class NotificationsController extends Controller
             return redirect()->back()->with('failed', 'سرویس ایمیل با مشکل مواجه شده است ، لطفا دقایقی بعد سعی کنید.');
         }
     }
+
+    public function sms(){
+        $users = User::all();
+        return view('notification.send-sms', compact('users'));
+    }
 }
