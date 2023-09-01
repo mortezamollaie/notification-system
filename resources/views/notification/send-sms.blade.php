@@ -20,19 +20,20 @@
                             {{ session('failed') }}
                         </div>
                     @endif
-                    <form action="#" method="POST">
+                    <form action="{{ route('notification.send.sms') }}" method="POST">
                         @csrf
                         <div class="form-group ">
                             <label for="user">کاربران</label>
                             <select name="user" class="form-control" id="user">
                                 @foreach ($users as $user)
-                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    <option {{ old('user') == $user->id ? 'selected' : '' }} value="{{ $user->id }}">
+                                        {{ $user->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="text">متن پیامک</label>
-                            <textarea name="text" id="text" rows="3" class="form-control"></textarea>
+                            <textarea name="text" id="text" rows="3" class="form-control">{{ old('text') }}</textarea>
                         </div>
                         @if ($errors->any())
                             <ul>

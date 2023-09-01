@@ -41,4 +41,15 @@ class NotificationsController extends Controller
         $users = User::all();
         return view('notification.send-sms', compact('users'));
     }
+
+    public function sendSms(Request $request, Notification $notification){
+        $request->validate([
+            'user' => 'integer | exists:users,id',
+            'text' => 'string | max:256'
+        ]);
+
+        // $notification->sendSms(User::find($request->user), $request->text);
+
+        return redirect()->back()->with('success', __('پیام کوتاه با موفقیت ارسال شد.'));
+    }
 }
